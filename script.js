@@ -17,9 +17,9 @@ var sevenPm = $("#19pm");
 var hour = moment().hours();
 var userInput;
 var hourSpan;
+// var hourString = $(".hour").text().split(" ");
 
-
-// Date and Time
+// Date and Hour
 
 var interval = setInterval(function() {
   var momentNow = moment();
@@ -32,38 +32,32 @@ var interval = setInterval(function() {
 function initPage() {
 
   console.log("Current Hour " + hour);
-  var init9 = JSON.parse(localStorage.getItem("09:00 am"));
+  var init9 = JSON.parse(localStorage.getItem("9AM"));
   nineAm.val(init9);
-
-  var init10 = JSON.parse(localStorage.getItem("10:00 am"))
+ 
+  var init10 = JSON.parse(localStorage.getItem("10AM"))
   tenAm.val(init10);
   
-  var init11 = JSON.parse(localStorage.getItem("11:00 am"))
+  var init11 = JSON.parse(localStorage.getItem("11AM"))
   elevenAm.val(init11);
   
-  var init12 = JSON.parse(localStorage.getItem("12:00 pm"))
+  var init12 = JSON.parse(localStorage.getItem("12AM"))
   twelvePm.val(init12);
   
-  var init1 = JSON.parse(localStorage.getItem("01:00 pm"))
+  var init1 = JSON.parse(localStorage.getItem("1PM"))
   onePm.val(init1);
   
-  var init2 = JSON.parse(localStorage.getItem("02:00 pm"))
+  var init2 = JSON.parse(localStorage.getItem("2PM"))
   twoPm.val(init2);
   
-  var init3 = JSON.parse(localStorage.getItem("03:00 pm"))
+  var init3 = JSON.parse(localStorage.getItem("3PM"))
   threePm.val(init3);
  
-  var init4 = JSON.parse(localStorage.getItem("04:00 pm"))
+  var init4 = JSON.parse(localStorage.getItem("4PM"))
   fourPm.val(init4);
   
-  var init5 = JSON.parse(localStorage.getItem("05:00 pm"))
+  var init5 = JSON.parse(localStorage.getItem("5PM"))
   fivePm.val(init5);
-  
-  var init6 = JSON.parse(localStorage.getItem("06:00 pm"))
-  sixPm.val(init6);
-  
-  var init7 = JSON.parse(localStorage.getItem("07:00 pm"))
-  sevenPm.val(init7);
 } 
 
 function background () {
@@ -73,6 +67,7 @@ function background () {
       hour = parseInt(hour);
       console.log(timeTest);
       console.log(hour);
+//      console.log(this);
       if (hour > timeTest) {
           $(this).addClass("past");
       } else if (hour < timeTest) {
@@ -87,7 +82,7 @@ $(document).ready(function(){
   initPage()
   background()
 
-  // Buttons for local save
+  // Buttons For Local
   $(".saveBtn").on("click", function(){
     userInput = $(this).siblings(".form-control").val().trim();
     console.log(userInput);
@@ -96,7 +91,7 @@ $(document).ready(function(){
     localStorage.setItem(hourSpan, JSON.stringify(userInput));
 
   })
-  // Button for clear the day
+  // Clear button
   $("#clearDay").on("click", function(){
     localStorage.clear();
     initPage()
